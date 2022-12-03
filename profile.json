@@ -4,26 +4,26 @@
 	"version": "v2022.11.13",
 	"keyword": ["warma", "沃玛", "undertale", "ut", "传说之下"],
 	"info": "",
-	"icon": "WARMASTORY.0/icon.ico",
+	"icon": "0/icon.ico",
 	"page": "",
-	"url": "Downloads/WARMASTORY.exe"
+	"url": "%file%/WARMASTORY.exe"
   },
   {
     "name": "Undertale Scratch版本",
 	"version": "v1.0.0",
 	"keyword": ["undertale", "undertale", "ut", "传说之下", "scratch"],
 	"info": "使用Scratch制作的Undertale，适用于Windows上。",
-	"icon": "Undertale.1/icon.png",
-	"page": "Undertale.1/page.htm",
-	"url": "Downloads/Undertale_windows_x86_64.zip"
+	"icon": "1/icon.png",
+	"page": "1/page.htm",
+	"url": "%file%/Undertale_windows_x86_64.zip"
   },
   {
     "name": "FL Studio 20",
 	"version": "v20",
 	"keyword": ["fl", "fls", "fl20", "fls20", "fl 20", "fls 20", "水果"],
 	"info": "一个好用的音乐软件，免安装版本，解压即用。",
-	"icon": "FL Studio 20.2/icon.jpg",
+	"icon": "2/icon.jpg",
 	"page": "",
-	"url": "Downloads/FL Studio 20.zip"
+	"url": "%file%/FL Studio 20.zip"
   }
 ]
