@@ -42,8 +42,7 @@
   <script>
    window.onload = function () {
 	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("GET", "games_profile.json", true);
-	//这里写链接23333，写路径很简单的
+	xmlhttp.open("GET", "profile.json", true);
     xmlhttp.onload  = function() {
      var profile = (JSON.parse(xmlhttp.response))[getRequest()['id']];
 	 //文件转换
@@ -53,7 +52,7 @@
      document.getElementById("gameVersion").innerText = profile.version;
      document.getElementById("gameInfo").innerText = profile.info;
 	 document.getElementById("gameDownload").onclick = function() {
-	  window.location.href = profile.url; 
+	  window.location.href = profile.url.replaceAll("%file%", "file/"); 
 	  alert('下载已开始');
 	 }
      document.getElementById("gamePage").src = profile.page;
