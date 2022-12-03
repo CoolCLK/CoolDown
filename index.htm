@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width = device-width,initial-scale = 1.0, maximum-scale = 0.875, minimum-scale = 0.875, user-scalable = no">
+  <title>CoolDown - 主页</title>
+  <style>
+   .search-input {
+    color: black;
+	background: white;
+	outline: none;
+	border: 0;
+	margin: -10px;
+	height: 35px;
+	width: 165px;
+	border-radius: 15px 0 0 15px;
+   }
+   
+   .search-submit {
+    cursor: pointer;
+    color: white;
+	background: blue;
+	outline: none;
+	border: 0;
+	height: 37px;
+	width: 55px;
+	border-radius: 0 15px 15px 0;
+   }
+  </style>
+  <script>
+   window.onload = function () {
+    var title = "";
+	
+    document.getElementById("gamesLab").innerHTML = "";
+	
+	randomSearch();
+	setInterval(randomSearch, 5000);
+	
+	var searchItem = getRequest()['search'];
+	if (searchItem != undefined && searchItem != "") {
+	 title = "搜索\"" + searchItem + "\"的结果";
+	 searchItem = decodeURI(searchItem);
+	 document.getElementById("searchInput").value = searchItem;
+	 var xmlhttp = new XMLHttpRequest();
+	 xmlhttp.open("GET", "games_profile.json", true);
+     xmlhttp.onload  = function() {
+      var games = JSON.parse(xmlhttp.response);
+	  var gamesCount = 0;
+	  for (var i = 0; i < games.length; i++) {
+	   var addList = function() {
+	    gamesCount++;
+	    document.getElementById("gamesLab").innerHTML += "<div><img src='" + games[i].icon + "' width='100px' style='float: left;'><p><h1>" + games[i].name + "</h1><a style='color: gray;'>" + games[i].version + "</a></p>" + "<p>" + games[i].info + "</p><p><a style='cursor: pointer; float: right;' onclick='window.location.href = \"page.htm?id=" + i + "\"'>点击进入</a></p><hr></div>";
+	   }
+	   var searched = searchItem.toLowerCase();
+	   if ((games[i].name.toLowerCase().indexOf(searched) >= 0)) {
+	    addList();
+	   }
+	   else {
+	    var canAdd = false;
+	    for (var k = 0; k < games[i].keyword.length; k++) {
+		 if ((games[i].keyword[k].toLowerCase().indexOf(searched) >= 0)) {
+	      addList();
+		  break;
+	     }
+		}
+	   }
+	  }
+	  if (gamesCount <= 0) {
+	   document.getElementById("gamesLab").innerHTML += "<p style='text-align: center;'>这里好像什么都没有? 找不到想要的内容?欢迎<a href='mailto:mr.chenlk123@qq.com?subject=CoolDown: 我想反馈请求将\"" + searchItem +"\"加入''>反馈</a>给我们!</p><p style='text-align: center; color: gray;'>注: 请在前面加上\"CoolDown: \"我们才方便去查看!</p>";
+	  }
+     }
+     xmlhttp.send();
+	}
+	document.title = "CoolDown - " + title;
+   }
+   
+   function randomSearch() {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", "games_profile.json", true);
+    xmlhttp.onload  = function() {
+     var games = JSON.parse(xmlhttp.response);
+	 var randomGame = Math.round(Math.random() * (games.length - 1));
+	 for (var i = 0; i < games.length; i++) {
+	  if (i == randomGame) {
+	   document.getElementById("searchInput").placeholder = games[i].name; //热词
+	  }
+	 }
+    }
+    xmlhttp.send();
+   }
+   
+   function searchFile(absoluteRandom) {
+    var input = document.getElementById('searchInput').value;
+	var word = "";
+	var allSpaceText = 0;
+	for (var i = 0; i < input.length; i++) {
+	 if (input[i] == " ") {
+	  allSpaceText++;
+	 }
+	}
+	if ((input == "" || allSpaceText == input.length) || (absoluteRandom)) {
+     word = document.getElementById('searchInput').placeholder;
+	}
+	else {
+	 word = document.getElementById('searchInput').value;
+     
+	}
+	window.location.href = "?search=" + escape(word);
+   }
+   
+   function getRequest() {
+    var url = location.search;
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for (var i = 0; i < strs.length; i ++) {
+          theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+        }
+    }
+    return theRequest;
+   }
+  </script>
+ </head>
+ <body>
+  <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-image: url('background.png'); background-repeat: repeat-x; background-attachment: fixed; background-position: center; transition: filter 0.5s; z-index: 0; height: calc(100vh); width: calc(100vw);" onmouseover="this.style.WebkitFilter = 'blur(5px)';" onmouseout="this.style.WebkitFilter = 'blur(0px)';"></div>
+  <div style="z-index: 10;">
+   <div style="z-index: 10; filter: blur(0px); height: calc(85vh); width: calc(95vw);">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+	 <h1>CoolDown</h1>
+	 <p style="text-align: center;">搜 你 想 搜</p>
+     <input id="searchInput" type="text" class="search-input" placeholder="" onkeydown="if (event.keyCode == '13') searchFile(false);" />
+     <input type="submit" class="search-submit" onclick="searchFile(false);" value="搜索" />
+	</div>
+   </div> 
+   <div style="z-index: 10; filter: blur(0px); background: white; position: absolute; left: 5%; right: 5%; border: 25px solid white;">
+    <div id="gamesLab">
+	</div>
+   </div>
+  </div>
+ </body>
+</html>

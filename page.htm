@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+  <title>CoolDown - </title>
+  <style>
+   .class-top {
+    background: rgb(150, 150, 150);
+	text-indent: 30px;
+	line-height: 400%;
+   }
+   
+   .class-top a {
+    color: rgb(255, 255, 255);
+	font-size: 25px;
+	border-bottom: 0px solid #FFFFFF;
+   }
+   
+   .class-top underline {
+    text-decoration: none;
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
+    background-size: 0% 3px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+	transition: background-size 0.5s;
+   }
+   
+   .class-top a:hover {
+    cursor: pointer;
+   }
+   
+   .class-top underline:hover {
+     background-size: 100% 3px;
+   }
+   
+   .download-button {
+    cursor: pointer;
+	height: calc(7vh);
+   }
+  </style>
+  <script>
+   window.onload = function () {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", "games_profile.json", true);
+	//这里写链接23333，写路径很简单的
+    xmlhttp.onload  = function() {
+     var profile = (JSON.parse(xmlhttp.response))[getRequest()['id']];
+	 //文件转换
+	 document.title = "CoolDown - " + profile.name;
+     document.getElementById("gameImage").src = profile.icon;
+     document.getElementById("gameName").innerText = profile.name;
+     document.getElementById("gameVersion").innerText = profile.version;
+     document.getElementById("gameInfo").innerText = profile.info;
+	 document.getElementById("gameDownload").onclick = function() {
+	  window.location.href = profile.url; 
+	  alert('下载已开始');
+	 }
+     document.getElementById("gamePage").src = profile.page;
+	}
+    xmlhttp.send();
+   }
+   
+   function getRequest() {
+    var url = location.search;
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for(var i = 0; i < strs.length; i ++) {
+          theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+        }
+    }
+    return theRequest;
+   }
+  </script>
+ </head>
+ <body>
+  <div class="class-top">
+   <a onclick="window.history.back();"><span>< 返回</span></a>
+  </div>
+  <div>
+   <img src="" id="gameImage" style="float: left; height: calc(12vh);" />
+   <p>
+    <h1 id="gameName"></h1>
+	<a id="gameVersion" style="color: gray;"></a>
+   </p>
+   <p id="gameInfo"></p>
+   <img id="gameDownload" src="download-button.png" class="download-button" onclick="" />
+  </div>
+  <iframe id="gamePage"src="" style="border: 0; width: calc(95vw); height: calc(100vh);" />
+ </body>
+</html>
