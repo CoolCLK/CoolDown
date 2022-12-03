@@ -42,7 +42,7 @@
 	 searchItem = decodeURI(searchItem);
 	 document.getElementById("searchInput").value = searchItem;
 	 var xmlhttp = new XMLHttpRequest();
-	 xmlhttp.open("GET", "games_profile.json", true);
+	 xmlhttp.open("GET", "profile.json", true);
      xmlhttp.onload  = function() {
       var games = JSON.parse(xmlhttp.response);
 	  var gamesCount = 0;
@@ -76,7 +76,7 @@
    
    function randomSearch() {
 	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("GET", "games_profile.json", true);
+	xmlhttp.open("GET", "profile.json", true);
     xmlhttp.onload  = function() {
      var games = JSON.parse(xmlhttp.response);
 	 var randomGame = Math.round(Math.random() * (games.length - 1));
