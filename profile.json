@@ -1,21 +1,12 @@
 [
   {
     "name": "WARMASTORY",
-	"version": "v2022.11.13",
+	"version": "Beta Windows",
 	"keyword": ["warma", "沃玛", "undertale", "ut", "传说之下"],
 	"info": "",
 	"icon": "0/icon.ico",
 	"page": "",
-	"url": "%file%/WARMASTORY.exe"
-  },
-  {
-    "name": "Undertale Scratch版本",
-	"version": "v1.0.0",
-	"keyword": ["undertale", "undertale", "ut", "传说之下", "scratch"],
-	"info": "使用Scratch制作的Undertale，适用于Windows上。",
-	"icon": "1/icon.png",
-	"page": "1/page.htm",
-	"url": "%file%/Undertale_windows_x86_64.zip"
+	"url": "https://developer.lanzoug.com/file/?VDJUag8+BDUIAVRsU2YGalRrDjZSWgZFVwIHTAEcWwkAVAIaWVYGC1MrUX0CP1cmAX0GZQQyC2UEZgBZADUGY1RpVDoPYwRoCGhUNlM2BjZUOw4tUmsGd1dtBzQBbFtuADQCZ1kzBmNTNVEhAiZXJgFmBjEEaws7BDEAKQBtBjVUe1QzD2EEfwhvVGBTYgYyVGgOOVJpBmFXZwdnAWlbbAA4AmxZZwZnUzxRPgIyVzQBPQZlBDkLPwQ0ADIAPwZlVGdUOw82BDMIcFR4U24Gd1QoDn5SfgZhVyIHaAE5W2cAMQJiWT0GZlM3UTcCZFdwAS8GagQ2C2wEZQA7AG0GMVRjVDMPYgRnCGxUMVM/BjJUIA4lUisGYlc8B3YBYFtqACYCIFl0BiVTOFE2AmBXYQFrBjMEbAs5BDQAPwBtBiFUIVRqDyIEbQhvVDNTMQYpVDkOPVIjBjVXZwcvAWxbbgA1"
   },
   {
     "name": "FL Studio 20",
