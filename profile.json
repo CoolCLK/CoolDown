@@ -4,7 +4,7 @@
 	"version": "Beta Windows",
 	"keyword": ["warma", "沃玛", "undertale", "ut", "传说之下"],
 	"info": "",
-	"icon": "0/icon.ico",
+	"icon": "files/icon.ico",
 	"page": "",
 	"url": "http://tool.bitefu.net/lanzou/?url=https://coolclk.lanzoum.com/i3cgi0hnxryf&type=down"
   },
@@ -13,8 +13,8 @@
 	"version": "v20",
 	"keyword": ["fl", "fls", "fl20", "fls20", "fl 20", "fls 20", "水果"],
 	"info": "一个好用的音乐软件，免安装版本，解压即用。",
-	"icon": "2/icon.jpg",
+	"icon": "files/icon.jpg",
 	"page": "",
-	"url": "%file%/FL Studio 20.zip"
+	"url": "files/FL Studio 20.zip"
   }
 ]
